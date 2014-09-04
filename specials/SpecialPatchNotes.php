@@ -1,5 +1,5 @@
 <?php
-class SpecialMyExtension extends SpecialPage {
+class SpecialPatchNotes extends SpecialPage {
 	function __construct() {
 		parent::__construct( 'MyExtension' );
 	}
@@ -14,7 +14,9 @@ class SpecialMyExtension extends SpecialPage {
  
 		# Do stuff
 		# ...
-		$wikitext = 'Hello world!';
+		$array = file('https://upgrades.pfestore.com/advantage/14.2.8.67/Patch/Patch%20Notes.txt');
+		
+		$wikitext = $array;
 		$output->addWikiText( $wikitext );
 	}
 }
