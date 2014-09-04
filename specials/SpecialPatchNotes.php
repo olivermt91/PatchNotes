@@ -19,7 +19,7 @@ class SpecialPatchNotes extends SpecialPage {
 			}
 		}
 		fclose($handle);
-		$wikitext = implode('<br />', $array);
+		return implode('<br />', $array);
 	}
 	
 	function execute( $par ) {
