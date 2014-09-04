@@ -10,16 +10,18 @@ class SpecialPatchNotes extends SpecialPage {
 		$handle = fopen($notes, 'r');
 		if ($handle) {
 			while ($line = fgets($handle)) {
+				$line = trim( $line );
 				if (strpos($line, 'Update') === 0) {
-					array_push($array, '== ' . trim( $line ) . ' ==');
-				}
-				else {
-					array_push($array, '* ' . trim( $line ) );
+					array_push($array, '== ' . $line . ' ==');
+				} elseif ( strlen( $line ) === 0 ) {
+					array_push($array, '' );
+				} else {
+					array_push($array, '* ' . $line );
 				}
 			}
 		}
 		fclose($handle);
-		return implode('<br />', $array);
+		return implode("\n", $array);
 	}
 	
 	function execute( $par ) {
