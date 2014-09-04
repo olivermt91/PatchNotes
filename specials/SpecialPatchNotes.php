@@ -10,7 +10,7 @@ class SpecialPatchNotes extends SpecialPage {
 		$handle = fopen($notes, 'r');
 		if ($handle) {
 			while ($line = fgets($handle)) {
-				if (explode(' ', trim($line)) = 'Update') {
+				if (explode(' ', trim($line)) == 'Update') {
 					array_push($array, '== ' + $line + ' ==');
 				}
 				else {
@@ -19,16 +19,19 @@ class SpecialPatchNotes extends SpecialPage {
 			}
 		}
 		fclose($handle);
+		$wikitext = implode('<br />', $array);
 	}
 	
 	function execute( $par ) {
+		global $wgPatchNotesURL;
+	
 		$request = $this->getRequest();
 		$output = $this->getOutput();
 		$this->setHeaders();
  
 		$param = $request->getText( 'param' );
 		
-		$wikitext = parse($wgPatchNotesURL);
+		$wikitext = $this->parse($wgPatchNotesURL);
 		$output->addWikiText( $wikitext );
 	}
 }
