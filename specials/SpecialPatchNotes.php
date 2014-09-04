@@ -10,11 +10,11 @@ class SpecialPatchNotes extends SpecialPage {
 		$handle = fopen($notes, 'r');
 		if ($handle) {
 			while ($line = fgets($handle)) {
-				if (explode(' ', trim($line)) == 'Update') {
-					array_push($array, '== ' + $line + ' ==');
+				if (strpos($line, 'Update') === 0) {
+					array_push($array, '== ' . trim( $line ) . ' ==');
 				}
 				else {
-					array_push($array, '* ' +$line);
+					array_push($array, '* ' . trim( $line ) );
 				}
 			}
 		}
