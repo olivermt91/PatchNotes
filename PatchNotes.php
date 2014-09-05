@@ -53,8 +53,8 @@ $dirbasename = basename( $dir );
 // $wgAutoLoadClasses to do this as follows:
 
 $wgAutoloadClasses[ 'SpecialPatchNotes' ] = __DIR__ . '/specials/SpecialPatchNotes.php';
-$wgMessagesDirs[ 'PatchNotes' ] = __DIR__ . "/i18n";
 $wgExtensionMessagesFiles[ 'PatchNotesAlias' ] = __DIR__ . '/PatchNotes.alias.php';
+$wgMessagesDirs[ 'PatchNotes' ] = __DIR__ . "/i18n";
 
 // Register special page
 
