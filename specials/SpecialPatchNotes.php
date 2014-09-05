@@ -1,5 +1,5 @@
 <?php
-class SpecialPatchNotes extends SpecialPage {
+class SpecialPatchNotes extends IncludableSpecialPage {
 	function __construct() {
 		parent::__construct('MyExtension');
 	}
@@ -31,8 +31,8 @@ class SpecialPatchNotes extends SpecialPage {
 		if ($handle) {
 			while ($line = fgets($handle)) {
 				$line = trim( $line );
-				if (strpos($line, 'Update') === 0) {
-					array_push($array, '== ' . $line . ' ==');
+				if (strpos($line, 'Update ') === 0) {
+					array_push($array, '=== ' . $line . ' ===');
 				} elseif ( strlen( $line ) === 0 ) {
 					array_push($array, '' );
 				} else {
@@ -54,12 +54,9 @@ class SpecialPatchNotes extends SpecialPage {
 		
 		$pageList = $this->listPages();
 		
-		$xmlstr = $this->getContents('https://upgrades.pfestore.com/advantage/feed.xml');
-		$feed = new SimpleXMLElement($xmlstr);
-		
-		$wikitext = $this->parse('https://upgrades.pfestore.com/advantage/' . $feed->entry->title . '/Patch/Patch%20Notes.txt');
-		
-		if(isset($subpage)){
+		if(isset($par)){
+			$wikitext = '== Version ' . $par . ' ==' . "\n" . $this->parse('https://upgrades.pfestore.com/advantage/' . $par . '/Patch/Patch%20Notes.txt') . "\n" . '[[Special:PatchNotes|Return to Patch Notes]]';
+			
 			$output->addWikiText($wikitext);
 		}
 		else {
