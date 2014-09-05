@@ -11,7 +11,7 @@
  *
  * @author Marshall Oliver
  *
- * @version 1.0
+ * @version 0.1.2
  *
  * @license GNU General Public License 2.0 or later
  */
@@ -28,8 +28,8 @@ $wgExtensionCredits['other'][] = array(
 	// Name of the Extension
 	'name' => 'PatchNotes',
 	
-	'author' => array('Marshall Oliver', 'Sam Reedy'),
-	'version' => '1.0',
+	'author' => 'Marshall Oliver',
+	'version' => '0.1.2',
 	
 	// The extension homepage.  Should probably consider housing the extension
 	// on Mediawiki.org.  For now, the extension will be stored on the CenterEdge
@@ -38,7 +38,7 @@ $wgExtensionCredits['other'][] = array(
 	'url' => 'http://wiki.centeredgesoftware.com/view/Extension:Patch_Notes',
 	
 	// Key name of the message containing the description.
-	// 'descriptionmsg' => 'extension-desc',
+	'descriptionmsg' => 'extension-desc',
 );
 
 /* Setup */
